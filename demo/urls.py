@@ -18,7 +18,6 @@ from django.conf import settings
 from django.conf.urls import url
 from django.views.generic import RedirectView
 import demo.views as demo_views
-# import psu_{{ project_name }}.views as auth_views
 from django.urls import path, include
 
 app_patterns = [
