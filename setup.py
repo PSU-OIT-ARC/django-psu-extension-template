@@ -46,7 +46,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',
-    description='Permission management for PSU Django apps',
+    description='{{ project_name }} extension for PSU Django apps',
     long_description=read('README.md'),
     long_description_content_type="text/markdown",
     url='https://github.com/PSU-OIT-ARC/django-psu-{{ project_name }}',
