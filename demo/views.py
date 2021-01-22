@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from psu_base.classes.Log import Log
-from psu_base.services import utility_service
-from django.conf import settings
-from psu_base import _DEFAULTS as base_defaults
+
 log = Log()
 
 
@@ -12,19 +10,6 @@ def index(request):
     """
     log.trace()
 
-    all_links = []
-    for plugin, version in utility_service.get_installed_plugins().items():
-        log.debug(f"\n\nfrom {plugin} import _DEFAULTS as {plugin}_defaults\n")
-        log.debug(f"{plugin}_defaults['{plugin.upper()}_ADMIN_LINKS']\n\n")
-        exec(f"from {plugin} import _DEFAULTS as {plugin}_defaults")
-        these_links = eval(f"{plugin}_defaults['{plugin.upper()}_ADMIN_LINKS']")
-        if these_links:
-            all_links.extend(these_links)
-            log.debug(f"TheseLinks: {these_links}\n\n")
-
-    plugins = utility_service.get_installed_plugins()
-    base_links = getattr(settings, 'PSU_BASE_ADMIN_LINKS', base_defaults['PSU_BASE_ADMIN_LINKS'])
-    log.end()
     return render(
-        request, 'landing.html', {'plugins': plugins, 'base_links': base_links, 'all_links': all_links}
+        request, 'landing.html', {}
     )

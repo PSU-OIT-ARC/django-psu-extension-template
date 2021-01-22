@@ -2,7 +2,7 @@ from django.conf import settings
 from psu_base.classes.Log import Log
 log = Log()
 
-__version__ = '0.6.1'
+__version__ = '0.0.1'
 
 __all__ = []
 

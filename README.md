@@ -2,9 +2,10 @@
 
 This template is used to start a new reusable app (plugin) to extend psu_base
 
-## How to use
+## How to Create a New Reusable App
 
-Step 1 (start new project):
+Step 1 (start new project):  
+*Note: Do **not** include "psu_" in the name of your project*
 ```bash
 $ django-admin.py startproject \
   --template=https://github.com/PSU-OIT-ARC/django-psu-extension-template/archive/master.zip \
@@ -30,4 +31,23 @@ Step 4 (initialize Git):
 $ git init
 $ git add .
 $ git commit -m "New reusable psu-base extension"
+```
+
+## Publishing Your New Reusable App
+Once you have developed some usable functionality, and tested it using the included Demo app, 
+you can deploy it to PyPi (assuming you have a PyPi account, and your access keys are set up).
+
+Here is the script that I use to deploy to PyPi:
+```buildoutcfg
+if [ -f "MANIFEST.in" ]
+then
+        export DJANGO_SETTINGS_MODULE="demo/settings"
+        python setup.py sdist bdist_wheel --universal
+        twine upload --repository testpypi dist/*
+        twine upload dist/*
+        rm dist/*
+        unset DJANGO_SETTINGS_MODULE
+else
+        echo "You must be in your project's root directory to publish to PyPi"
+fi
 ```
