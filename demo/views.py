@@ -10,6 +10,4 @@ def index(request):
     """
     log.trace()
 
-    return render(
-        request, 'landing.html', {}
-    )
+    return render(request, "landing.html", {})

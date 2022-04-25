@@ -14,8 +14,4 @@ def index(request):
     Menu of ...
     """
     log.trace()
-    return render(
-        request, 'index.html',
-        {}
-    )
-
+    return render(request, "index.html", {})

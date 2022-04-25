@@ -23,22 +23,26 @@ from django.urls import path, include
 app_patterns = [
     # Django admin site. Probably won't use this. Our apps typically use Banner security classes.
     # Finti's sso_proxy app has JWT-specific permission endpoints that could be modified for service-to-service calls
-    path('admin/', admin.site.urls),
-
+    path("admin/", admin.site.urls),
     # PSU and CAS views are defined in psu_base app
-    url('psu/', include(('psu_base.urls', 'psu_base'), namespace='psu')),
-    url('accounts/', include(('psu_base.urls', 'psu_base'), namespace='cas')),
-    url('{{ project_name }}/', include(('psu_{{ project_name }}.urls', 'psu_{{ project_name }}'), namespace='{{ project_name }}')),
-
+    url("psu/", include(("psu_base.urls", "psu_base"), namespace="psu")),
+    url("accounts/", include(("psu_base.urls", "psu_base"), namespace="cas")),
+    url(
+        "{{ project_name }}/",
+        include(
+            ("psu_{{ project_name }}.urls", "psu_{{ project_name }}"),
+            namespace="{{ project_name }}",
+        ),
+    ),
     # For now, use a simple landing page
-    path('', demo_views.index),
+    path("", demo_views.index),
 ]
 
 # On-prem apps will have additional URL context
 if settings.URL_CONTEXT:
     urlpatterns = [
-        path('', RedirectView.as_view(url='/'+settings.URL_CONTEXT)),
-        url(settings.URL_CONTEXT + '/', include(app_patterns)),
+        path("", RedirectView.as_view(url="/" + settings.URL_CONTEXT)),
+        url(settings.URL_CONTEXT + "/", include(app_patterns)),
     ]
 
 # AWS apps will NOT have additional URL context
