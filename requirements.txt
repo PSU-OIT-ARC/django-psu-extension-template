@@ -1,1 +1,2 @@
-psu-base>=5.1.17
+-f https://packages.wdt.pdx.edu/dist/
+psu-site>=6.4.3
