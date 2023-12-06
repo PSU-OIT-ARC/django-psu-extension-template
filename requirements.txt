@@ -1,2 +1,2 @@
 -f https://packages.wdt.pdx.edu/dist/
-psu-site>=6.4.3
+psu-site>=7.0

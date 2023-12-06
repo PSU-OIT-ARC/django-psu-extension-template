@@ -8,7 +8,7 @@ Step 1 (start new project):
 *Note: Do **not** include "psu_" in the name of your project*
 ```bash
 $ django-admin.py startproject \
-  --template=https://github.com/PSU-OIT-ARC/django-psu-extension-template/archive/master.zip \
+  --template=https://github.com/PSU-OIT-ARC/django-psu-extension-template/archive/main.zip \
   --extension=py,md,txt,in \
   project_name
 ```
