@@ -29,12 +29,13 @@ CAS_SERVER_URL = 'https://sso-stage.oit.pdx.edu/idp/profile/cas/login'
 # `````````````````
 # REQUIRED: Finti URL and Token:
 
-FINTI_URL = 'https://ws-test.oit.pdx.edu'
+FINTI_URL = 'https://sf-stage.oit.pdx.edu'
 
 # Finti URLs (for reference)
 # -  http://localhost:8888
-# -  https://ws-test.oit.pdx.edu
-# -  https://ws.oit.pdx.edu
+# -  https://sf-dev.oit.pdx.edu
+# -  https://sf-stage.oit.pdx.edu
+# -  https://sf-prod.oit.pdx.edu
 
 # As-of psu-base 0.11.0, Finti responses can be cached for offline development
 FINTI_SIMULATE_WHEN_POSSIBLE = False   # Simulate Finti calls (i.e. when not on VPN)

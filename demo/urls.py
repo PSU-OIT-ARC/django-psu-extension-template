@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf import settings
-from django.conf.urls import url
 from django.views.generic import RedirectView
 import demo.views as demo_views
 from django.urls import path, include
@@ -25,9 +24,9 @@ app_patterns = [
     # Finti's sso_proxy app has JWT-specific permission endpoints that could be modified for service-to-service calls
     path("admin/", admin.site.urls),
     # PSU and CAS views are defined in psu_base app
-    url("psu/", include(("psu_base.urls", "psu_base"), namespace="psu")),
-    url("accounts/", include(("psu_base.urls", "psu_base"), namespace="cas")),
-    url(
+    path("psu/", include(("psu_base.urls", "psu_base"), namespace="psu")),
+    path("accounts/", include(("psu_base.urls", "psu_base"), namespace="cas")),
+    path(
         "{{ project_name }}/",
         include(
             ("psu_{{ project_name }}.urls", "psu_{{ project_name }}"),
@@ -42,7 +41,7 @@ app_patterns = [
 if settings.URL_CONTEXT:
     urlpatterns = [
         path("", RedirectView.as_view(url="/" + settings.URL_CONTEXT)),
-        url(settings.URL_CONTEXT + "/", include(app_patterns)),
+        path(settings.URL_CONTEXT + "/", include(app_patterns)),
     ]
 
 # AWS apps will NOT have additional URL context
